@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>砂布成本系统 - 管理后台</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<div class="container admin-container">
+
+
+    <h1>
+        砂布成本系统 - 管理后台
+    </h1>
+
+
+
+    <div class="admin-menu">
+
+        <div id="message"></div>
+
+        <button onclick="showSpecs()">
+            产品规格管理
+        </button>
+
+
+        <button onclick="showSandpaper()">
+            砂布价格管理
+        </button>
+
+
+        <button onclick="showQuotations()">
+            报价记录管理
+        </button>
+
+        <button onclick="window.location.href='change-password.html'">
+            修改密码
+        </button>
+
+        <button onclick="logoutAdmin()">
+            退出登录
+        </button>
+
+
+    </div>
+
+
+
+
+    <a href="index.html" class="nav-button">
+        返回成本计算
+    </a>
+
+
+
+
+
+
+
+    <!-- =====================
+         产品规格管理
+    ====================== -->
+
+
+    <div id="specSection">
+
+
+
+        <div class="section-title">
+
+
+            <h2>
+                产品规格成本管理
+            </h2>
+
+
+
+            <button onclick="addSpec()">
+                + 添加规格
+            </button>
+
+
+
+        </div>
+
+
+
+
+
+        <input
+
+                id="specSearch"
+
+                placeholder="搜索规格"
+
+                oninput="searchSpecs()"
+
+        >
+
+
+
+
+
+
+        <table id="specTable">
+
+
+            <thead>
+
+
+            <tr>
+
+
+                <th>ID</th>
+
+                <th>规格</th>
+
+                <th>条宽</th>
+
+                <th>页长</th>
+
+                <th>页数</th>
+
+
+                <th>基体</th>
+
+                <th>胶水</th>
+
+                <th>标贴</th>
+
+                <th>纸箱</th>
+
+
+                <th>人工</th>
+
+                <th>管理</th>
+
+                <th>运费</th>
+
+
+                <th>操作</th>
+
+
+            </tr>
+
+
+            </thead>
+
+
+
+
+
+            <tbody>
+
+
+            </tbody>
+
+
+
+
+        </table>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- =====================
+         砂布价格管理
+    ====================== -->
+
+
+    <div id="sandpaperSection">
+
+
+
+
+
+        <div class="section-title">
+
+
+            <h2>
+                砂布价格管理
+            </h2>
+
+
+
+            <button onclick="addSandpaper()">
+                + 添加砂布
+            </button>
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <input
+
+                id="sandpaperSearch"
+
+                placeholder="搜索磨料或编号"
+
+                oninput="searchSandpaper()"
+
+        >
+
+
+
+
+
+
+
+        <table id="sandpaperTable">
+
+
+            <thead>
+
+
+
+            <tr>
+
+
+                <th>ID</th>
+
+                <th>磨料</th>
+
+                <th>编号</th>
+
+                <th>粒度</th>
+
+                <th>价格</th>
+
+                <th>操作</th>
+
+
+            </tr>
+
+
+
+            </thead>
+
+
+
+
+
+            <tbody>
+
+
+            </tbody>
+
+
+
+
+
+        </table>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- =====================
+         报价记录管理
+    ====================== -->
+
+
+    <div id="quotationSection">
+
+
+
+        <h2>
+            报价记录管理
+        </h2>
+
+
+
+
+        <table>
+
+
+            <thead>
+
+            <tr>
+
+
+                <th>编号</th>
+
+                <th>备注</th>
+
+                <th>尺寸</th>
+
+                <th>磨料</th>
+
+                <th>砂布成本</th>
+
+                <th>总成本</th>
+
+                <th>中间商报价</th>
+
+                <th>终端用户报价</th>
+
+                <th>时间</th>
+
+                <th>操作</th>
+
+
+            </tr>
+
+
+            </thead>
+
+
+
+
+            <tbody id="quotationTable">
+
+
+            </tbody>
+
+
+
+        </table>
+
+
+
+    </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<script src="admin.js"></script>
+
+
+
+</body>
+
+
+</html>

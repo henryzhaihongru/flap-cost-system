@@ -1,0 +1,16 @@
+const db = require('./db');
+function run(sql) { return new Promise((resolve,reject) => db.run(sql, err => err ? reject(err) : resolve())); }
+async function initializeDatabase() {
+    for (const sql of [
+    "\r\n        CREATE TABLE IF NOT EXISTS sandpaper_prices (\r\n\r\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\r\n\r\n            abrasive TEXT NOT NULL,\r\n\r\n            material_no TEXT NOT NULL,\r\n\r\n            grit TEXT NOT NULL,\r\n\r\n            price REAL NOT NULL CHECK(price >= 0),\r\n\r\n            price_source TEXT DEFAULT 'DATABASE',\r\n\r\n            supplier TEXT,\r\n\r\n            remark TEXT,\r\n\r\n            created_at DATETIME DEFAULT CURRENT_TIMESTAMP\r\n\r\n        )\r\n    ",
+    "\r\n        CREATE TABLE IF NOT EXISTS product_specs (\r\n\r\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\r\n\r\n\r\n            spec TEXT UNIQUE NOT NULL,\r\n\r\n\r\n            width REAL CHECK(width > 0),\r\n\r\n            length REAL CHECK(length > 0),\r\n\r\n\r\n            pieces INTEGER CHECK(pieces > 0),\r\n\r\n\r\n            base_cost REAL CHECK(base_cost >= 0),\r\n\r\n            glue_cost REAL CHECK(glue_cost >= 0),\r\n\r\n            label_cost REAL CHECK(label_cost >= 0),\r\n\r\n            box_cost REAL CHECK(box_cost >= 0),\r\n\r\n\r\n            labor_cost REAL CHECK(labor_cost >= 0),\r\n\r\n            management_cost REAL CHECK(management_cost >= 0),\r\n\r\n            shipping_cost REAL CHECK(shipping_cost >= 0)\r\n\r\n        )\r\n    ",
+    "\r\n        CREATE TABLE IF NOT EXISTS quotations (\r\n\r\n            id INTEGER PRIMARY KEY AUTOINCREMENT,\r\n\r\n\r\n            remark TEXT,\r\n\r\n\r\n            width REAL,\r\n\r\n            length REAL,\r\n\r\n            pages INTEGER,\r\n\r\n\r\n            abrasive TEXT,\r\n\r\n\r\n            sandpaper_amount REAL,\r\n\r\n            sandpaper_cost REAL,\r\n\r\n\r\n            material_cost_tax REAL,\r\n\r\n            material_cost_no_tax REAL,\r\n\r\n\r\n            other_cost REAL,\r\n\r\n\r\n            total_cost_tax_shipping REAL,\r\n\r\n\r\n            profit_rate REAL,\r\n\r\n            profit REAL,\r\n\r\n\r\n            sale_price REAL,\r\n\r\n\r\n            no_invoice REAL,\n            profit_rate_2 REAL,\n            profit_2 REAL,\n            sale_price_2 REAL,\n            no_invoice_2 REAL,\r\n\r\n\r\n            created_at DATETIME DEFAULT CURRENT_TIMESTAMP\r\n\r\n        )\r\n    ",
+    "\r\n        CREATE INDEX IF NOT EXISTS idx_sandpaper_search\r\n\r\n        ON sandpaper_prices\r\n        (\r\n            abrasive,\r\n            material_no,\r\n            grit\r\n        )\r\n    "
+]) await run(sql);
+    const columns = await new Promise((resolve,reject) => db.all('PRAGMA table_info(quotations)', (err, rows) => err ? reject(err) : resolve(rows)));
+    for (const name of ['profit_rate_2','profit_2','sale_price_2','no_invoice_2']) {
+        if (!columns.some(column => column.name === name)) await run('ALTER TABLE quotations ADD COLUMN ' + name + ' REAL');
+    }
+}
+if (require.main === module) initializeDatabase().then(() => { console.log('Database initialized'); db.close(); }).catch(err => {console.error(err); db.close(); process.exitCode=1;});
+module.exports = { initializeDatabase };

@@ -1,0 +1,24 @@
+{
+  "name": "flap-cost-system-backend",
+  "version": "1.0.0",
+  "description": "砂布成本与报价管理系统：登录权限、基础数据维护与报价记录",
+  "main": "server.js",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "start": "node server.js",
+    "reset-password": "node reset-password.js",
+    "seed:demo": "node ../database/seed-demo.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

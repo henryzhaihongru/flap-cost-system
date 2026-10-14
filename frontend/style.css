@@ -1,0 +1,472 @@
+/* =====================
+   全局
+===================== */
+
+
+body {
+
+    margin:0;
+
+    font-family:Arial,sans-serif;
+
+    background-color:#f5f5f5;
+
+}
+
+
+
+.container {
+
+    width:90%;
+
+    max-width:1200px;
+
+    margin:40px auto;
+
+}
+
+
+
+
+
+/* =====================
+   标题
+===================== */
+
+
+h1 {
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+
+h2 {
+
+    margin-bottom:15px;
+
+}
+
+
+h3 {
+
+    margin-top:20px;
+
+}
+
+
+
+
+
+/* =====================
+   按钮
+===================== */
+
+
+button {
+
+    padding:8px 20px;
+
+    cursor:pointer;
+
+    border:none;
+
+    background:#2c7be5;
+
+    color:white;
+
+    border-radius:5px;
+
+}
+
+
+button:hover {
+
+    background:#1a5fb4;
+
+}
+
+
+
+
+
+/* =====================
+   导航按钮
+===================== */
+
+
+.nav-button {
+
+    display:inline-block;
+
+    margin-bottom:20px;
+
+    padding:8px 16px;
+
+    background:#2c7be5;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:5px;
+
+}
+
+
+.nav-button:hover{
+
+    background:#1a5fb4;
+
+}
+
+
+
+
+
+/* =====================
+   页面布局
+===================== */
+
+
+.main {
+
+    display:flex;
+
+    gap:40px;
+
+    align-items:flex-start;
+
+}
+
+
+
+
+
+.input-area {
+
+    flex:1;
+
+    padding:20px;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+}
+
+
+
+
+
+.result-area {
+
+    flex:1;
+
+    padding:20px;
+
+    background:white;
+
+    border:1px solid #ddd;
+
+}
+
+
+
+
+
+/* =====================
+   输入
+===================== */
+
+
+input,
+select {
+
+    padding:5px;
+
+    margin:0 0 0 10px;
+
+}
+
+
+.input-area input {
+
+    width:120px;
+
+}
+
+
+.input-area select{
+
+    width:150px;
+
+}
+
+
+.input-area label {
+
+    display:flex;
+
+    align-items:center;
+
+    white-space:nowrap;
+
+    margin-bottom:10px;
+
+}
+
+
+.input-area label input,
+.input-area label select {
+
+    margin-left:10px;
+
+}
+
+
+/* =====================
+   表格
+===================== */
+
+
+table {
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    background:white;
+
+}
+
+
+th {
+
+    padding:10px;
+
+    text-align:center;
+
+    border:1px solid #ccc;
+
+    background:#eee;
+
+}
+
+
+td {
+
+    padding:10px;
+
+    text-align:center;
+
+    border:1px solid #ccc;
+
+}
+
+
+
+
+
+/* =====================
+   后台
+===================== */
+
+
+.admin-container {
+
+    width:95%;
+
+    max-width:none;
+
+    margin-left:20px;
+
+    margin-right:20px;
+
+}
+
+
+
+.admin-menu {
+
+    margin-bottom:20px;
+
+}
+
+
+.admin-menu button {
+
+    margin-right:15px;
+
+}
+
+
+
+.admin-container input {
+
+    width:80px;
+
+}
+
+
+
+.admin-container table{
+
+    font-size:14px;
+
+}
+
+
+
+
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+
+/* =====================
+   搜索
+===================== */
+
+
+#specSearch,
+#sandpaperSearch {
+
+    width:200px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+
+/* =====================
+   卡片
+===================== */
+
+
+.card {
+
+    border:1px solid #ccc;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    background:white;
+
+}
+
+
+
+
+
+/* =====================
+   手机适配
+===================== */
+
+
+@media(max-width:768px){
+
+
+    .main{
+
+        flex-direction:column;
+
+    }
+
+
+
+    .input-area,
+    .result-area{
+
+        width:100%;
+
+    }
+
+
+}
+
+/* =====================
+   轻提示
+===================== */
+
+#message {
+
+    position: fixed;
+
+    top: 20px;
+
+    right: 30px;
+
+    padding: 12px 25px;
+
+    background: #2c7be5;
+
+    color:white;
+
+    border-radius:5px;
+
+    display:none;
+
+    z-index:999;
+
+}
+
+.login-description,
+.password-hint {
+    color: #666;
+    text-align: center;
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 380px;
+    background: #fff;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+.login-card label,
+.login-card input,
+.login-card button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.login-card label { margin: 18px 0; }
+.login-card input { margin-top: 8px; padding: 10px; }
+.login-card button { margin: 10px 0; padding: 11px; }
+.login-message { min-height: 22px; color: #dc3545; }
+.login-back { display: block; text-align: center; margin-top: 16px; }
+
+[hidden] {
+    display: none !important;
+}
